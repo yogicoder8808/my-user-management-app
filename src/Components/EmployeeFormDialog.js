@@ -1,12 +1,20 @@
 // EmployeeFormDialog.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, Grid, IconButton, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 function EmployeeFormDialog({ open, onClose, onSave, employee }) {
-  const [formData, setFormData] = useState(employee || {});
+  const [formData, setFormData] = useState({});
   const [profilePhoto, setProfilePhoto] = useState('');
-  
+
+  useEffect(() => {
+    if (employee) {
+      setFormData(employee);
+    } else {
+      setFormData({});
+    }
+  }, [employee]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -24,7 +32,7 @@ function EmployeeFormDialog({ open, onClose, onSave, employee }) {
   };
 
   const handleSave = () => {
-    onSave({ ...formData, profilePhoto });
+    onSave({ ...formData, profilePhoto: profilePhoto || employee?.profilePhoto });
     setFormData({}); // Reset form data after saving
     setProfilePhoto(''); // Reset profile photo
   };
@@ -82,6 +90,8 @@ function EmployeeFormDialog({ open, onClose, onSave, employee }) {
 }
 
 export default EmployeeFormDialog;
+
+
 
 
 
