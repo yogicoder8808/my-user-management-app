@@ -74,7 +74,7 @@ function EmployeeTable({ employees, onEdit, onDelete, onAddEmployee }) {
                 <TableCell>{employee.firstName} {employee.lastName}</TableCell>
                 <TableCell>{employee.email}</TableCell>
                 <TableCell>{employee.gender}</TableCell>
-                <TableCell>{employee.phoneNumber}</TableCell>
+                <TableCell>{employee.countryCode} {employee.phoneNumber}</TableCell>
                 <TableCell align="left">
                   <Button onClick={() => onEdit(index)} color="success" startIcon={<Edit />} size="small" style={{ margin: '0'}}></Button>
                   <Button onClick={() => onDelete(index)} color="error" startIcon={<Delete />} size="small" style={{ margin: '0' }}></Button> {/* Replaced with Delete icon */}
@@ -100,19 +100,6 @@ function HeaderTableCell({ children, align }) {
 }
 
 export default EmployeeTable;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
