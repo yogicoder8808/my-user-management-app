@@ -1,9 +1,7 @@
-import './App.css';
-
 import React, { useState } from 'react';
-import { Button } from '@mui/material';
 import EmployeeTable from './Components/EmployeeTable';
 import EmployeeFormDialog from './Components/EmployeeFormDialog';
+
 function App() {
   const [employees, setEmployees] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -43,12 +41,10 @@ function App() {
 
   return (
     <div>
-      <Button onClick={handleAdd} variant="contained" color="primary" style={{ marginBottom: '20px' }}>Add New Employee</Button>
-      <EmployeeTable employees={employees} onEdit={handleEdit} onDelete={handleDelete} />
+      <EmployeeTable employees={employees} onEdit={handleEdit} onDelete={handleDelete} onAddEmployee={handleAdd} />
       <EmployeeFormDialog open={openFormDialog} onClose={handleCloseFormDialog} onSave={handleSaveEmployee} employee={employees[editIndex]} />
     </div>
   );
 }
 
 export default App;
-
